@@ -1,7 +1,11 @@
 package com.educandoweb.course.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+
+import org.springframework.data.annotation.Transient;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,6 +22,9 @@ private static final long serialVersionUID = 1L;
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	
+	@Transient
+	private Set<Product> products = new HashSet<>();
 	
 	public Category() {
 		
@@ -44,6 +51,10 @@ private static final long serialVersionUID = 1L;
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public Set<Product> getProducts() {
+		return products;
+	}
 
 	@Override
 	public int hashCode() {
@@ -61,5 +72,7 @@ private static final long serialVersionUID = 1L;
 		Category other = (Category) obj;
 		return Objects.equals(id, other.id);
 	}
+
 	
+
 }
