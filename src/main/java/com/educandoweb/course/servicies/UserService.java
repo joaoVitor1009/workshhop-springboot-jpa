@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.educandoweb.course.entities.User;
 import com.educandoweb.course.repositories.UserRepository;
@@ -25,5 +24,9 @@ public class UserService  {
       Optional<User> obj =userRepository.findById(id);
       return obj.get();
       
+	}
+	
+	public User insert(User obj) {
+		return userRepository.save(obj);
 	}
 }
